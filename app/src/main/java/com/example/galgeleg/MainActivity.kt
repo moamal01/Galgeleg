@@ -1,5 +1,6 @@
 package com.example.galgeleg
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -32,6 +33,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             4 -> hangman_imageView.setImageResource(R.drawable.forkert4)
             5 -> hangman_imageView.setImageResource(R.drawable.forkert5)
             6 -> hangman_imageView.setImageResource(R.drawable.forkert6)
+        }
+
+        if (galgelogik.erSpilletVundet()) {
+            val intent = Intent(this, VinderActivity::class.java)
+            intent.putExtra("Tries", galgelogik.antalForkerteBogstaver)
+            startActivity(intent)
+        } else if (galgelogik.erSpilletTabt()) {
+
         }
     }
 }
