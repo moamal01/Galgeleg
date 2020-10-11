@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var word = galgelogik.ordet
+
         // Sæt onClickListener
         gæt_button.setOnClickListener(this)
 
@@ -23,7 +25,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         val bogstav: String = letter_guess.text.toString().toLowerCase(Locale.ROOT)
 
-        galgelogik.gætBogstav(bogstav)
+        word_textView.text = galgelogik.gætBogstav(bogstav).toString()
         gættede_bogstav_textView.text = galgelogik.brugteBogstaver.toString()
 
         when(galgelogik.antalForkerteBogstaver) {
@@ -39,8 +41,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val intent = Intent(this, VinderActivity::class.java)
             intent.putExtra("Tries", galgelogik.antalForkerteBogstaver)
             startActivity(intent)
+            finish()
         } else if (galgelogik.erSpilletTabt()) {
-
+            val intent = Intent(this, TaberActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.example.galgeleg
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_vinder.*
 
