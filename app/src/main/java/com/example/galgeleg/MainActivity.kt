@@ -25,10 +25,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         val bogstav: String = letter_guess.text.toString().toLowerCase(Locale.ROOT)
 
-        word_textView.text = galgelogik.gætBogstav(bogstav).toString()
+        galgelogik.gætBogstav(bogstav).toString()
         gættede_bogstav_textView.text = galgelogik.brugteBogstaver.toString()
 
-        when(galgelogik.antalForkerteBogstaver) {
+        when (galgelogik.antalForkerteBogstaver) {
             1 -> hangman_imageView.setImageResource(R.drawable.forkert1)
             2 -> hangman_imageView.setImageResource(R.drawable.forkert2)
             3 -> hangman_imageView.setImageResource(R.drawable.forkert3)
