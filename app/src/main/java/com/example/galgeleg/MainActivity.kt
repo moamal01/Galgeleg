@@ -11,25 +11,32 @@ import java.util.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     val galgelogik: Galgelogik = Galgelogik()
+    var word = galgelogik.ordet
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var word = galgelogik.ordet
-
         // Sæt onClickListener
         gæt_button.setOnClickListener(this)
 
         galgelogik.startNytSpil()
+
+        word_textView.text = galgelogik.synligtOrd
     }
 
     override fun onClick(view: View?) {
         val bogstav: String = letter_guess.text.toString().toLowerCase(Locale.ROOT)
 
-        galgelogik.gætBogstav(bogstav).toString()
+        galgelogik.gætBogstav(bogstav)
         gættede_bogstav_textView.text = galgelogik.brugteBogstaver.toString()
 
+        updateHangman()
+        onEndGame()
+    }
+
+    private fun updateHangman() {
         when (galgelogik.antalForkerteBogstaver) {
             1 -> hangman_imageView.setImageResource(R.drawable.forkert1)
             2 -> hangman_imageView.setImageResource(R.drawable.forkert2)
@@ -38,7 +45,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             5 -> hangman_imageView.setImageResource(R.drawable.forkert5)
             6 -> hangman_imageView.setImageResource(R.drawable.forkert6)
         }
+    }
 
+    private fun onEndGame() {
         if (galgelogik.erSpilletVundet()) {
             val intent = Intent(this, VinderActivity::class.java)
             intent.putExtra("Tries", galgelogik.antalForkerteBogstaver)
