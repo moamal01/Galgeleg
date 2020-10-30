@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.example.galgeleg.R
 import com.example.galgeleg.model.Galgelogik
 import com.google.firebase.firestore.FirebaseFirestore
@@ -52,11 +54,14 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun onEndGame() {
+        val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+
         if (galgelogik.erSpilletVundet()) {
-            val intent = Intent(this, VinderActivity::class.java)
-            intent.putExtra("Tries", galgelogik.antalForkerteBogstaver)
-            startActivity(intent)
-            finish()
+            val winnerFragment = WinnerFragment()
+
+            fragmentTransaction.replace(R.id.frame_game, winnerFragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
         } else if (galgelogik.erSpilletTabt()) {
             val intent = Intent(this, TaberActivity::class.java)
             startActivity(intent)
