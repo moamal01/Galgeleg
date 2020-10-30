@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name="com.example.galgeleg.view.VinderActivity" />
         <activity android:name=".view.TaberActivity" />
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.GameActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
