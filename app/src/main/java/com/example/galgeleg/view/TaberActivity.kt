@@ -1,8 +1,8 @@
-package com.example.galgeleg
+package com.example.galgeleg.view
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.galgeleg.R
 
 class TaberActivity : AppCompatActivity() {
 

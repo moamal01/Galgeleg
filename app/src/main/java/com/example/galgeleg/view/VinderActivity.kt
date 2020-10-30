@@ -1,13 +1,17 @@
-package com.example.galgeleg
+package com.example.galgeleg.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.galgeleg.view.adapter.HighscoreAdapter
+import com.example.galgeleg.R
+import com.example.galgeleg.model.Galgelogik
 import kotlinx.android.synthetic.main.activity_vinder.*
 
 class VinderActivity : AppCompatActivity() {
 
-    var galgelogik: Galgelogik = Galgelogik()
+    var galgelogik: Galgelogik =
+        Galgelogik()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

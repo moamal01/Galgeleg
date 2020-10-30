@@ -1,4 +1,4 @@
-package com.example.galgeleg
+package com.example.galgeleg.view.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

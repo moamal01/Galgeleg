@@ -1,10 +1,11 @@
-package com.example.galgeleg
+package com.example.galgeleg.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.galgeleg.R
+import com.example.galgeleg.model.Highscore
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.highscore_row.view.*
 
 class HighscoreAdapter : RecyclerView.Adapter<ViewHolder>() {

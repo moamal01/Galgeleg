@@ -1,18 +1,20 @@
-package com.example.galgeleg
+package com.example.galgeleg.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import com.example.galgeleg.R
+import com.example.galgeleg.model.Galgelogik
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    val galgelogik: Galgelogik = Galgelogik()
+    val galgelogik: Galgelogik =
+        Galgelogik()
     var word = galgelogik.ordet
-
+    private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +33,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         galgelogik.gætBogstav(bogstav)
         gættede_bogstav_textView.text = galgelogik.brugteBogstaver.toString()
+
+        word_textView.text = galgelogik.synligtOrd
 
         updateHangman()
         onEndGame()
@@ -59,4 +63,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             finish()
         }
     }
+
+//    private fun load() {
+//        firestore.collection("inventory").get()
+//            .addOnSuccessListener { result ->
+//                for (document in result) {
+//                    val grocery = document.toObject<Grocery>()
+//                    restaurant.addGrocery(grocery)
+//                }
+//                recyclerview_inventory.adapter?.notifyDataSetChanged()
+//            }
+//            .addOnFailureListener {
+//                print("mistake")
+//            }
+//    }
 }

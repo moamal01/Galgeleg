@@ -1,4 +1,4 @@
-package com.example.galgeleg;
+package com.example.galgeleg.model;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,14 +22,14 @@ public class Galgelogik {
 
     public Galgelogik() {
         muligeOrd.add("bil");
-        muligeOrd.add("computer");
-        muligeOrd.add("programmering");
-        muligeOrd.add("motorvej");
-        muligeOrd.add("busrute");
-        muligeOrd.add("gangsti");
-        muligeOrd.add("skovsnegl");
-        muligeOrd.add("solsort");
-        muligeOrd.add("tyve");
+//        muligeOrd.add("computer");
+//        muligeOrd.add("programmering");
+//        muligeOrd.add("motorvej");
+//        muligeOrd.add("busrute");
+//        muligeOrd.add("gangsti");
+//        muligeOrd.add("skovsnegl");
+//        muligeOrd.add("solsort");
+//        muligeOrd.add("tyve");
         startNytSpil();
     }
 
@@ -78,16 +78,15 @@ public class Galgelogik {
         opdaterSynligtOrd();
     }
 
-
     private void opdaterSynligtOrd() {
         synligtOrd = "";
         spilletErVundet = true;
         for (int n = 0; n < ordet.length(); n++) {
             String bogstav = ordet.substring(n, n + 1);
             if (brugteBogstaver.contains(bogstav)) {
-                synligtOrd = synligtOrd + bogstav;
+                synligtOrd = synligtOrd + "" + "" + bogstav;
             } else {
-                synligtOrd = synligtOrd + "*";
+                synligtOrd = synligtOrd + " _ ";
                 spilletErVundet = false;
             }
         }
