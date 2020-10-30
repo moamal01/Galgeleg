@@ -60,9 +60,11 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
         } else if (galgelogik.erSpilletTabt()) {
-            val intent = Intent(this, TaberActivity::class.java)
-            startActivity(intent)
-            finish()
+            val loserFragment = LoserFragment()
+
+            fragmentTransaction.replace(R.id.frame_game, loserFragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
         }
     }
 
