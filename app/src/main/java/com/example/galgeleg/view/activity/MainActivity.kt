@@ -1,4 +1,4 @@
-package com.example.galgeleg.view
+package com.example.galgeleg.view.activity
 
 import android.content.Intent
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.example.galgeleg.view
+package com.example.galgeleg.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import com.example.galgeleg.R
 import com.example.galgeleg.view.adapter.HighscoreAdapter
 import kotlinx.android.synthetic.main.fragment_winner.*
 
-class LoserFragment : Fragment() {
+class WinnerFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +18,9 @@ class LoserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        recyclerView_highScore.layoutManager = LinearLayoutManager(activity)
+        recyclerView_highScore.adapter = HighscoreAdapter()
     }
 
     override fun onCreateView(
@@ -25,6 +28,6 @@ class LoserFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_loser, container, false)
+        return inflater.inflate(R.layout.fragment_winner, container, false)
     }
 }
