@@ -20,12 +20,15 @@
 
     <EditText
         android:id="@+id/enter_name_menu"
+        android:maxLength="9"
         android:layout_width="250dp"
         android:layout_height="30dp"
+        android:textColor="#FFF"
+        android:hint="Navn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/game_title_menu"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:layout_marginTop="75dp"
         android:background="@color/buttonColor"/>
 
@@ -41,7 +44,18 @@
         app:layout_constraintTop_toBottomOf="@id/enter_name_menu"
         app:layout_constraintBottom_toBottomOf="@id/start_game_button"
         />
-    
+
+    <TextView
+        android:id="@+id/error_message_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#F61504"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/start_game_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
     <Button
         android:id="@+id/start_game_button"
         android:layout_width="wrap_content"
