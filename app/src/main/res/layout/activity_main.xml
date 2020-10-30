@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".view.GameActivity">
+    tools:context=".view.activity.GameActivity">
 
     <EditText
         android:id="@+id/letter_guess"
