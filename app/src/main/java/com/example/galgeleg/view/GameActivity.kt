@@ -13,9 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class GameActivity : AppCompatActivity(), View.OnClickListener {
-    val galgelogik: Galgelogik =
-        Galgelogik()
-    var word = galgelogik.ordet
+    val galgelogik: Galgelogik = Galgelogik()
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +24,6 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
         gæt_button.setOnClickListener(this)
 
         galgelogik.startNytSpil()
-
         word_textView.text = galgelogik.synligtOrd
     }
 
