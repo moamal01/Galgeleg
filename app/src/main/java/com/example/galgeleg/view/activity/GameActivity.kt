@@ -1,10 +1,7 @@
 package com.example.galgeleg.view.activity
 
-import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.FragmentTransaction
@@ -15,15 +12,13 @@ import com.example.galgeleg.view.fragment.WinnerFragment
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
-import java.util.concurrent.Executors
 
 class GameActivity : AppCompatActivity(), View.OnClickListener {
-    private val bgThread = Executors.newSingleThreadExecutor()
-    private val handler = Handler(Looper.getMainLooper())
     private val TAG = "GameActivity"
 
     val galgelogik = Galgelogik.getInstance()
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+//    val name = intent.extras
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,34 +58,28 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
 
         if (galgelogik.erSpilletVundet()) {
             val winnerFragment = WinnerFragment()
+            submitScore()
 
             fragmentTransaction.replace(R.id.frame_game, winnerFragment)
             fragmentTransaction.commit()
         } else if (galgelogik.erSpilletTabt()) {
             val loserFragment = LoserFragment()
 
-            submitScore()
             fragmentTransaction.replace(R.id.frame_game, loserFragment)
             fragmentTransaction.commit()
         }
     }
 
-    class DoAsync(val handler:() -> Unit) : AsyncTask<Void, Void, Void>() {
-
-        override fun doInBackground(vararg p0: Void?): Void? {
-            handler()
-            return null
-        }
-    }
-
     private fun submitScore() {
-        // Add a new document with a generated id.
+        val name = intent.getStringExtra("name")
+
         val data = hashMapOf(
-            "name" to "Tokyo",
-            "country" to "Japan"
+            "name" to name,
+            "tries" to galgelogik.antalForkerteBogstaver,
+            "word" to galgelogik.ordet
         )
 
-        firestore.collection("cities")
+        firestore.collection("highScores")
             .add(data)
             .addOnSuccessListener { documentReference ->
                 Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")

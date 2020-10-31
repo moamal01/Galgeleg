@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             error_message_menu.text = "Indtast venligst et navn"
         } else {
             val intent = Intent(this, GameActivity::class.java)
+            intent.putExtra("name", player.name)
             startActivity(intent)
         }
     }
