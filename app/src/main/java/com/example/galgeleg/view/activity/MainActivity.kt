@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     val galgelogik = Galgelogik.getInstance()
     private val bgThread = Executors.newSingleThreadExecutor()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)

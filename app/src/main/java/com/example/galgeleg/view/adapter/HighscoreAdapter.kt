@@ -8,25 +8,9 @@ import com.example.galgeleg.model.Highscore
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.highscore_row.view.*
 
-class HighscoreAdapter : RecyclerView.Adapter<ViewHolder>() {
+class HighscoreAdapter(private val highscores: List<Highscore>) : RecyclerView.Adapter<ViewHolder>() {
 
-    val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-    var scores = mutableListOf<Highscore>()
 
-    init {
-        var h: Highscore = Highscore("Moamal", 0, "Abekat")
-        var h1: Highscore = Highscore("Moamal", 0, "Abekat")
-        var h2: Highscore = Highscore("Moamal", 0, "Abekat")
-        var h3: Highscore = Highscore("Moamal", 0, "Abekat")
-        var h4: Highscore = Highscore("Moamal", 0, "Abekat")
-
-        scores.add(0, h)
-        scores.add(0, h)
-        scores.add(0, h)
-        scores.add(0, h)
-        scores.add(0, h)
-
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -35,12 +19,12 @@ class HighscoreAdapter : RecyclerView.Adapter<ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return scores.size
+        return highscores.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.view.name_highScore.text = scores[position].player
-        holder.view.tries_highScore.text = scores[position].score.toString()
-        holder.view.word_highScore.text = scores[position].word
+        holder.view.name_highScore.text = highscores[position].player
+        holder.view.tries_highScore.text = highscores[position].score.toString()
+        holder.view.word_highScore.text = highscores[position].word
     }
 }
