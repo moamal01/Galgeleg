@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.logging.Handler;
 
 public class Galgelogik {
     /** AHT afprøvning er muligeOrd synlig på pakkeniveau */
@@ -19,6 +22,11 @@ public class Galgelogik {
     private boolean sidsteBogstavVarKorrekt;
     private boolean spilletErVundet;
     private boolean spilletErTabt;
+
+    private Executor bgThread = Executors.newSingleThreadExecutor();
+
+
+//    private Handler handler = new Handler();
 
     public Galgelogik() {
         muligeOrd.add("bil");
@@ -108,7 +116,7 @@ public class Galgelogik {
             sidsteBogstavVarKorrekt = false;
             System.out.println("Bogstavet var IKKE korrekt: " + bogstav);
             antalForkerteBogstaver = antalForkerteBogstaver + 1;
-            if (antalForkerteBogstaver > 6) {
+            if (antalForkerteBogstaver > 1) {
                 spilletErTabt = true;
             }
         }
@@ -126,9 +134,9 @@ public class Galgelogik {
         System.out.println("---------- ");
     }
 
-
     public static String hentUrl(String url) throws IOException {
         System.out.println("Henter data fra " + url);
+
         BufferedReader br = new BufferedReader(new InputStreamReader(new URL(url).openStream()));
         StringBuilder sb = new StringBuilder();
         String linje = br.readLine();
