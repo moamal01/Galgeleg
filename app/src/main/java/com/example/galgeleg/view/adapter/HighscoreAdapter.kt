@@ -23,8 +23,8 @@ class HighscoreAdapter(private val highscores: List<Highscore>) : RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.view.name_highScore.text = highscores[position].player
-        holder.view.tries_highScore.text = highscores[position].score.toString()
-        holder.view.word_highScore.text = highscores[position].word
+        holder.view.name_highScore.text = highscores[position].name.toString()
+        holder.view.tries_highScore.text = highscores[position].tries.toString()
+        holder.view.word_highScore.text = highscores[position].word.toString()
     }
 }

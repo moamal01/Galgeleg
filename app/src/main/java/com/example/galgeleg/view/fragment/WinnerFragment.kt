@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_winner.*
 class WinnerFragment : Fragment() {
 
     val galgelogik = Galgelogik.getInstance()
-    private val firestore = FirebaseFirestore.getInstance()
+    private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,7 @@ class WinnerFragment : Fragment() {
     }
 
     private fun loadHighScores() {
-        firestore.collection("highScores").get()
+        firestore.collection("highscores").get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     val highscore = document.toObject<Highscore>()

@@ -79,7 +79,7 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
             "word" to galgelogik.ordet
         )
 
-        firestore.collection("highScores")
+        firestore.collection("highscores")
             .add(data)
             .addOnSuccessListener { documentReference ->
                 Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
