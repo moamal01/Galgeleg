@@ -23,24 +23,25 @@ public class Galgelogik {
     private boolean spilletErVundet;
     private boolean spilletErTabt;
 
-    private Executor bgThread = Executors.newSingleThreadExecutor();
-
-
-//    private Handler handler = new Handler();
-
-    public Galgelogik() {
+    // private constructor
+    private Galgelogik() {
         muligeOrd.add("bil");
-//        muligeOrd.add("computer");
-//        muligeOrd.add("programmering");
-//        muligeOrd.add("motorvej");
-//        muligeOrd.add("busrute");
-//        muligeOrd.add("gangsti");
-//        muligeOrd.add("skovsnegl");
-//        muligeOrd.add("solsort");
-//        muligeOrd.add("tyve");
+        muligeOrd.add("computer");
+        muligeOrd.add("programmering");
+        muligeOrd.add("motorvej");
+        muligeOrd.add("busrute");
+        muligeOrd.add("gangsti");
+        muligeOrd.add("skovsnegl");
+        muligeOrd.add("solsort");
+        muligeOrd.add("tyve");
         startNytSpil();
     }
 
+    private static Galgelogik galgelogikInstance = new Galgelogik();
+
+    public static Galgelogik getInstance() {
+        return galgelogikInstance;
+    }
 
     public ArrayList<String> getBrugteBogstaver() {
         return brugteBogstaver;
