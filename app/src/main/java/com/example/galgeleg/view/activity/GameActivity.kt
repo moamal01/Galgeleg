@@ -22,7 +22,7 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
     private val handler = Handler(Looper.getMainLooper())
     private val TAG = "GameActivity"
 
-    val galgelogik: Galgelogik = Galgelogik()
+    val galgelogik = Galgelogik.getInstance()
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,15 +31,6 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
 
         // Sæt onClickListener
         gæt_button.setOnClickListener(this)
-
-//        DoAsync {
-//            handler.post {
-//                galgelogik.hentOrdFraDr()
-//            }
-//        }.execute()
-        bgThread.execute {
-            galgelogik.hentOrdFraDr()
-        }
 
         word_textView.text = galgelogik.synligtOrd
     }
