@@ -30,7 +30,7 @@ class WinnerFragment : Fragment() {
         recyclerView_highScore.layoutManager = LinearLayoutManager(activity)
         recyclerView_highScore.adapter = HighscoreAdapter(galgelogik.highscores)
 
-        tryCount_text.text = galgelogik.antalForkerteBogstaver.toString() + " forsøg"
+        tryCount_text.text = galgelogik.antalForkerteBogstaver.toString() + " forkerte"
         word_reveal_winner.text = "Ordet var: " + galgelogik.ordet
     }
 

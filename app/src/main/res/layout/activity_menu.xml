@@ -35,11 +35,12 @@
 
     <Button
         android:id="@+id/highScore_button_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/buttonColor"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@drawable/futuristic_button"
         android:fontFamily="@font/turret_road_bold"
         android:text="Highscores"
+        android:textColor="#000"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="@id/start_game_button"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -60,12 +61,13 @@
 
     <Button
         android:id="@+id/start_game_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="100dp"
-        android:background="@color/buttonColor"
+        android:background="@drawable/futuristic_button"
         android:fontFamily="@font/turret_road_bold"
+        android:textColor="#000"
         android:text="Start spil"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
