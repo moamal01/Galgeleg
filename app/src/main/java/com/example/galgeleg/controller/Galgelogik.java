@@ -1,4 +1,6 @@
-package com.example.galgeleg.model;
+package com.example.galgeleg.controller;
+
+import com.example.galgeleg.model.Highscore;
 
 import java.io.BufferedReader;
 import java.io.IOException;

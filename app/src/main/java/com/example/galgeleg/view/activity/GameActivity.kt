@@ -6,7 +6,8 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.FragmentTransaction
 import com.example.galgeleg.R
-import com.example.galgeleg.model.Galgelogik
+import com.example.galgeleg.controller.FirebaseController
+import com.example.galgeleg.controller.Galgelogik
 import com.example.galgeleg.view.fragment.LoserFragment
 import com.example.galgeleg.view.fragment.WinnerFragment
 import com.google.firebase.firestore.FirebaseFirestore
@@ -17,8 +18,8 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
     private val TAG = "GameActivity"
 
     val galgelogik = Galgelogik.getInstance()
-    private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-//    val name = intent.extras
+    val firebaseController = FirebaseController()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,11 +55,13 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun onEndGame() {
+
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
 
         if (galgelogik.erSpilletVundet()) {
+            val name = intent.getStringExtra("name")
             val winnerFragment = WinnerFragment()
-            submitScore()
+            firebaseController.submitScore(name!!)
 
             fragmentTransaction.replace(R.id.frame_game, winnerFragment)
             fragmentTransaction.commit()
@@ -68,24 +71,5 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
             fragmentTransaction.replace(R.id.frame_game, loserFragment)
             fragmentTransaction.commit()
         }
-    }
-
-    private fun submitScore() {
-        val name = intent.getStringExtra("name")
-
-        val data = hashMapOf(
-            "name" to name,
-            "tries" to galgelogik.antalForkerteBogstaver,
-            "word" to galgelogik.ordet
-        )
-
-        firestore.collection("highscores")
-            .add(data)
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
-            }
     }
 }
