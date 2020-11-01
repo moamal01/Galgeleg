@@ -15,17 +15,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class GameActivity : AppCompatActivity(), View.OnClickListener {
-    private val TAG = "GameActivity"
 
     val galgelogik = Galgelogik.getInstance()
     val firebaseController = FirebaseController()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Sæt onClickListener
         gæt_button.setOnClickListener(this)
 
         word_textView.text = galgelogik.synligtOrd
@@ -55,13 +52,13 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun onEndGame() {
-
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
 
         if (galgelogik.erSpilletVundet()) {
             val name = intent.getStringExtra("name")
-            val winnerFragment = WinnerFragment()
             firebaseController.submitScore(name!!)
+
+            val winnerFragment = WinnerFragment()
 
             fragmentTransaction.replace(R.id.frame_game, winnerFragment)
             fragmentTransaction.commit()
