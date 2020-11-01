@@ -22,6 +22,7 @@ class HighScoreFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        firebaseController.clearHighScores()
         firebaseController.loadHighScores(recyclerView_highScoreFragment)
 
         recyclerView_highScoreFragment.layoutManager = LinearLayoutManager(activity)

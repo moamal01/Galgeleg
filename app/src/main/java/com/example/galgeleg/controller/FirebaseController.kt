@@ -44,4 +44,8 @@ class FirebaseController {
                 Log.w(TAG, "Error adding document", e)
             }
     }
+
+    fun clearHighScores() {
+        galgelogik.highscores.clear()
+    }
 }
