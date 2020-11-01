@@ -12,7 +12,7 @@ import com.example.galgeleg.view.adapter.HighscoreAdapter
 import kotlinx.android.synthetic.main.fragment_loser.*
 import kotlinx.android.synthetic.main.fragment_winner.*
 
-class LoserFragment : Fragment(){
+class LoserFragment : Fragment() {
 
     val galgelogik = Galgelogik.getInstance()
 

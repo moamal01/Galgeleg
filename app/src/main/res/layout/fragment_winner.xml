@@ -10,10 +10,10 @@
         android:id="@+id/winner_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/turret_road_bold"
         android:text="Du har vundet \nDu havde"
+        android:textAlignment="center"
         android:textColor="#FFF"
         android:textSize="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -45,11 +45,11 @@
         app:layout_constraintTop_toBottomOf="@id/tryCount_text" />
 
     <TextView
-        android:fontFamily="@font/turret_road_regular"
         android:id="@+id/highScore_title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
+        android:fontFamily="@font/turret_road_regular"
         android:text="Highscore list"
         android:textColor="#FFF"
         android:textSize="15dp"
@@ -58,22 +58,22 @@
         app:layout_constraintTop_toBottomOf="@id/tryCount_text" />
 
     <TextView
-        android:fontFamily="@font/turret_road_regular"
         android:id="@+id/name_highScoreList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/turret_road_regular"
         android:text="Navn"
         android:textColor="#FFF"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/highScore_title_text" />
 
     <TextView
-        android:fontFamily="@font/turret_road_regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/turret_road_regular"
         android:text="Forsøg"
         android:textColor="#FFF"
         app:layout_constraintLeft_toRightOf="@id/name_highScoreList"
@@ -81,12 +81,12 @@
         app:layout_constraintTop_toBottomOf="@id/highScore_title_text" />
 
     <TextView
-        android:fontFamily="@font/turret_road_regular"
         android:id="@+id/word_highScoreList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginRight="60dp"
+        android:fontFamily="@font/turret_road_regular"
         android:text="Ord"
         android:textColor="#FFF"
         app:layout_constraintRight_toRightOf="parent"

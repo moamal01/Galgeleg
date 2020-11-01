@@ -8,9 +8,8 @@ import com.example.galgeleg.model.Highscore
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.highscore_row.view.*
 
-class HighscoreAdapter(private val highscores: List<Highscore>) : RecyclerView.Adapter<ViewHolder>() {
-
-
+class HighscoreAdapter(private val highscores: List<Highscore>) :
+    RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
