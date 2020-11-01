@@ -10,9 +10,10 @@
         android:id="@+id/winner_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:layout_marginTop="50dp"
         android:fontFamily="sans-serif"
-        android:text="Du har vundet \nDet tog dig kun"
+        android:text="Du har vundet \nDu brugte"
         android:textColor="#FFF"
         android:textSize="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -30,6 +31,18 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/winner_text"
         tools:text="4" />
+
+    <TextView
+        android:id="@+id/word_reveal_winner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="sans-serif"
+        android:textColor="#FFF"
+        android:textSize="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tryCount_text" />
 
     <TextView
         android:id="@+id/highScore_title_text"
