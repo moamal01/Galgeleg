@@ -1,18 +1,17 @@
 package com.example.galgeleg.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.example.galgeleg.R
 import com.example.galgeleg.controller.FirebaseController
 import com.example.galgeleg.controller.Galgelogik
 import com.example.galgeleg.view.fragment.LoserFragment
 import com.example.galgeleg.view.fragment.WinnerFragment
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
+
 
 class GameActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -23,7 +22,9 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        gæt_button.setOnClickListener(this)
+        galgelogik.enterPressed(letter_guess, guess_button)
+
+        guess_button.setOnClickListener(this)
 
         word_textView.text = galgelogik.synligtOrd
     }
@@ -35,6 +36,7 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
         gættede_bogstav_textView.text = galgelogik.brugteBogstaver.toString()
 
         word_textView.text = galgelogik.synligtOrd
+        letter_guess.text = null
 
         updateHangman()
         onEndGame()
@@ -69,4 +71,5 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
             fragmentTransaction.commit()
         }
     }
+
 }

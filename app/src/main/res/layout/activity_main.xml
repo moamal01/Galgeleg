@@ -52,12 +52,12 @@
         android:fontFamily="sans-serif"
         android:textColor="#000000"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@id/gæt_button"
+        app:layout_constraintBottom_toTopOf="@id/guess_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button
-        android:id="@+id/gæt_button"
+        android:id="@+id/guess_button"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginBottom="100dp"

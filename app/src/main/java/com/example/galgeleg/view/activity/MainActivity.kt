@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
+        galgelogik.enterPressed(enter_name_menu, start_game_button)
+
         start_game_button.setOnClickListener(this)
         highScore_button_menu.setOnClickListener(this)
 

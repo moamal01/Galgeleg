@@ -1,5 +1,11 @@
 package com.example.galgeleg.controller;
 
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import com.example.galgeleg.model.Highscore;
 
 import java.io.BufferedReader;
@@ -217,5 +223,18 @@ public class Galgelogik {
 
     public ArrayList<Highscore> getHighscores() {
         return highscores;
+    }
+
+    public void enterPressed(EditText editText, final Button button) {
+        /* The code below is inspired by https://www.bragitoff.com/2017/04/trigger-button-click-press-doneenter-key-keyboard-solved/
+        The modification is that the code is inside a methods that allows the editText and button to be substituted. */
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    button.performClick();
+                }
+                return false;
+            }
+        });
     }
 }
