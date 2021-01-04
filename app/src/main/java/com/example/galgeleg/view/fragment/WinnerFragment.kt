@@ -1,6 +1,7 @@
 package com.example.galgeleg.view.fragment
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ class WinnerFragment : Fragment(), View.OnClickListener {
 
     val galgelogik = Galgelogik.getInstance()
     val firebaseController = FirebaseController()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +40,11 @@ class WinnerFragment : Fragment(), View.OnClickListener {
         word_reveal_winner.text = "Ordet var: " + galgelogik.ordet
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // Play sound
+        val winSound: MediaPlayer = MediaPlayer.create(activity, R.raw.win_sound)
+        winSound.start()
+
         return inflater.inflate(R.layout.fragment_winner, container, false)
     }
 

@@ -1,5 +1,6 @@
 package com.example.galgeleg.view.activity
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -22,10 +23,13 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Play sound
+        val startSound: MediaPlayer = MediaPlayer.create(this, R.raw.start_sound)
+        startSound.start()
+
         galgelogik.enterPressed(letter_guess, guess_button)
 
         guess_button.setOnClickListener(this)
-
         word_textView.text = galgelogik.synligtOrd
     }
 

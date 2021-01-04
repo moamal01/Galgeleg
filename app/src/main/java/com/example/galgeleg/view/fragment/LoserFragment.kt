@@ -1,6 +1,7 @@
 package com.example.galgeleg.view.fragment
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,14 +26,15 @@ class LoserFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        main_menu_loser.setOnClickListener(this)
         word_reveal_loser.text = galgelogik.ordet
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // Play sound
+        val deathSound: MediaPlayer = MediaPlayer.create(activity, R.raw.death_sound)
+        deathSound.start()
+
         return inflater.inflate(R.layout.fragment_loser, container, false)
     }
 

@@ -1,10 +1,10 @@
 package com.example.galgeleg.view.activity
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.galgeleg.R
 import com.example.galgeleg.controller.Galgelogik
@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     val galgelogik = Galgelogik.getInstance()
     private val bgThread = Executors.newSingleThreadExecutor()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             if (player.name == "") {
                 error_message_menu.text = "Indtast venligst et navn"
             } else {
+                // Start game
                 val intent = Intent(this, GameActivity::class.java)
                 intent.putExtra("name", player.name)
                 galgelogik.startNytSpil()

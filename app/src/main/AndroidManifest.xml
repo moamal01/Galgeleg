@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".view.activity.GameActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".view.activity.MainActivity" android:theme="@style/Theme.AppCompat.NoActionBar" >
+        <activity android:name=".view.activity.GameActivity" android:theme="@style/Theme.AppCompat.NoActionBar" android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.MainActivity" android:theme="@style/Theme.AppCompat.NoActionBar" android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
