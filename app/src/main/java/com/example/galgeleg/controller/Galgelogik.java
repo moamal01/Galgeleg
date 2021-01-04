@@ -174,7 +174,6 @@ public class Galgelogik {
         muligeOrd.addAll(new HashSet<String>(Arrays.asList(data.split(" "))));
 
         System.out.println("muligeOrd = " + muligeOrd);
-        startNytSpil();
     }
 
 

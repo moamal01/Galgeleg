@@ -25,7 +25,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         start_game_button.setOnClickListener(this)
         highScore_button_menu.setOnClickListener(this)
+    }
 
+    override fun onStart() {
+        super.onStart()
         bgThread.execute {
             galgelogik.hentOrdFraDr()
         }
@@ -41,6 +44,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             } else {
                 val intent = Intent(this, GameActivity::class.java)
                 intent.putExtra("name", player.name)
+                galgelogik.startNytSpil()
                 startActivity(intent)
             }
         } else if (view == highScore_button_menu) {
