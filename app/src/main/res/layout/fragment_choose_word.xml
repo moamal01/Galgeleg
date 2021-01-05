@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:singleLine="true"
         android:fontFamily="@font/turret_road_bold"
         android:text="Vælg et ord"
         android:textColor="#FFF"

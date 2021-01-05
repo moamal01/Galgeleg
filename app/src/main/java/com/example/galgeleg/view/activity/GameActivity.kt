@@ -75,5 +75,4 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
             fragmentTransaction.commit()
         }
     }
-
 }

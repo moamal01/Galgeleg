@@ -24,8 +24,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
-        galgelogik.enterPressed(enter_name_menu, start_game_button)
-
         start_game_button.setOnClickListener(this)
         custom_word.setOnClickListener(this)
         highScore_button_menu.setOnClickListener(this)
@@ -47,10 +45,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View?) {
+        val player = Player(enter_name_menu.text.toString())
 
         when (view) {
             start_game_button -> {
-                val player = Player(enter_name_menu.text.toString())
 
                 if (player.name == "") {
                     error_message_menu.text = "Indtast venligst et navn"
@@ -66,8 +64,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 openFragment(highScoreFragment)
             }
             custom_word -> {
-                val chooseWordFragment = ChooseWordFragment()
-                openFragment(chooseWordFragment)
+                if (player.name == "") {
+                    error_message_menu.text = "Indtast venligst et navn"
+                } else {
+                    val chooseWordFragment = ChooseWordFragment(player.name)
+                    openFragment(chooseWordFragment)
+                }
             }
         }
     }

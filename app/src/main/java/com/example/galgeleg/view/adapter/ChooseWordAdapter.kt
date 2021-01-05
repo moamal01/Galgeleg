@@ -8,7 +8,8 @@ import com.example.galgeleg.controller.Galgelogik
 import kotlinx.android.synthetic.main.highscore_row.view.*
 import kotlinx.android.synthetic.main.word_row.view.*
 
-class ChooseWordAdapter(private val words: ArrayList<String>) : RecyclerView.Adapter<ViewHolder>() {
+class ChooseWordAdapter(private val words: ArrayList<String>,
+private val listener: (String, Int) -> Unit): RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -22,5 +23,8 @@ class ChooseWordAdapter(private val words: ArrayList<String>) : RecyclerView.Ada
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.view.word_choose.text = words[position]
+
+        val string = words[position]
+        holder.itemView.setOnClickListener { listener(string, position)}
     }
 }
