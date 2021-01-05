@@ -76,13 +76,17 @@ public class Galgelogik {
     }
 
 
-    public void startNytSpil() {
+    public void startNytSpil(String ord) {
         brugteBogstaver.clear();
         antalForkerteBogstaver = 0;
         spilletErVundet = false;
         spilletErTabt = false;
         if (muligeOrd.isEmpty()) throw new IllegalStateException("Listen over mulige ord er tom!");
-        ordet = muligeOrd.get(new Random().nextInt(muligeOrd.size()));
+        if (ord == null) {
+            ordet = muligeOrd.get(new Random().nextInt(muligeOrd.size()));
+        } else {
+            ordet = ord;
+        }
         System.out.println("Nyt spil - det skjulte ord er: " + ordet);
         opdaterSynligtOrd();
     }
@@ -209,7 +213,6 @@ public class Galgelogik {
         }
 
         System.out.println("muligeOrd = " + muligeOrd);
-        startNytSpil();
     }
 
     public static void main(String[] args) throws Exception {

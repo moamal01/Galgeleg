@@ -48,24 +48,27 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View?) {
 
-        if (view == start_game_button) {
-            val player = Player(enter_name_menu.text.toString())
+        when (view) {
+            start_game_button -> {
+                val player = Player(enter_name_menu.text.toString())
 
-            if (player.name == "") {
-                error_message_menu.text = "Indtast venligst et navn"
-            } else {
-                // Start game
-                val intent = Intent(this, GameActivity::class.java)
-                intent.putExtra("name", player.name)
-                galgelogik.startNytSpil()
-                startActivity(intent)
+                if (player.name == "") {
+                    error_message_menu.text = "Indtast venligst et navn"
+                } else {
+                    val intent = Intent(this, GameActivity::class.java)
+                    intent.putExtra("name", player.name)
+                    galgelogik.startNytSpil(null)
+                    startActivity(intent)
+                }
             }
-        } else if (view == highScore_button_menu) {
-            val highScoreFragment = HighScoreFragment()
-            openFragment(highScoreFragment)
-        } else if (view == custom_word) {
-            val chooseWordFragment = ChooseWordFragment()
-            openFragment(chooseWordFragment)
+            highScore_button_menu -> {
+                val highScoreFragment = HighScoreFragment()
+                openFragment(highScoreFragment)
+            }
+            custom_word -> {
+                val chooseWordFragment = ChooseWordFragment()
+                openFragment(chooseWordFragment)
+            }
         }
     }
 }
