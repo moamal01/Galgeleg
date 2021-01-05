@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.galgeleg">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,8 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".view.activity.GameActivity" android:theme="@style/Theme.AppCompat.NoActionBar" android:screenOrientation="portrait"/>
-        <activity android:name=".view.activity.MainActivity" android:theme="@style/Theme.AppCompat.NoActionBar" android:screenOrientation="portrait" >
+        <activity
+            android:name=".view.activity.GameActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".view.activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,5 +30,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
