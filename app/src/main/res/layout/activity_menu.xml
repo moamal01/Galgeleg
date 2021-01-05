@@ -43,10 +43,26 @@
         android:text="Highscores"
         android:textAllCaps="false"
         android:textColor="#000"
-        app:layout_constraintBottom_toBottomOf="@id/start_game_button"
+        app:layout_constraintBottom_toTopOf="@id/start_game_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/enter_name_menu" />
+
+    <Button
+        android:id="@+id/custom_word"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/futuristic_button"
+        android:fontFamily="@font/turret_road_bold"
+        android:text="Vælg et ord"
+        android:textAllCaps="false"
+        android:textColor="#000"
+        app:layout_constraintTop_toBottomOf="@id/highScore_button_menu"
+        app:layout_constraintBottom_toTopOf="@id/start_game_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/error_message_menu"

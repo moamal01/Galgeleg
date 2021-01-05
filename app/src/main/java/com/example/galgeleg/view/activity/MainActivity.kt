@@ -5,10 +5,12 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.galgeleg.R
 import com.example.galgeleg.controller.Galgelogik
 import com.example.galgeleg.model.Player
+import com.example.galgeleg.view.fragment.ChooseWordFragment
 import com.example.galgeleg.view.fragment.HighScoreFragment
 import kotlinx.android.synthetic.main.activity_menu.*
 import java.util.concurrent.Executors
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         galgelogik.enterPressed(enter_name_menu, start_game_button)
 
         start_game_button.setOnClickListener(this)
+        custom_word.setOnClickListener(this)
         highScore_button_menu.setOnClickListener(this)
     }
 
@@ -33,6 +36,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         bgThread.execute {
             galgelogik.hentOrdFraDr()
         }
+    }
+
+    private fun openFragment(fragment: Fragment) {
+
+        val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_menu, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 
     override fun onClick(view: View?) {
@@ -51,11 +62,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         } else if (view == highScore_button_menu) {
             val highScoreFragment = HighScoreFragment()
-
-            val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.frame_menu, highScoreFragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+            openFragment(highScoreFragment)
+        } else if (view == custom_word) {
+            val chooseWordFragment = ChooseWordFragment()
+            openFragment(chooseWordFragment)
         }
     }
 }
