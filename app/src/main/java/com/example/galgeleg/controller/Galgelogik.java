@@ -276,4 +276,14 @@ public class Galgelogik {
             return myWords;
         }
     }
+
+    public void deleteWord(Context context, String word) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        myWords.remove(word);
+        String json = gson.toJson(myWords);
+        editor.putString("array_list_key", json);
+        editor.apply();
+    }
 }
