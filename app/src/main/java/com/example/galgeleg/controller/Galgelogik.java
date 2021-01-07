@@ -1,5 +1,9 @@
 package com.example.galgeleg.controller;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -7,15 +11,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.galgeleg.model.Highscore;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
+import java.util.prefs.Preferences;
 
 public class Galgelogik {
     /**
@@ -31,6 +39,7 @@ public class Galgelogik {
     private boolean spilletErTabt;
 
     private ArrayList<Highscore> highscores = new ArrayList<Highscore>();
+    private ArrayList<String> myWords = new ArrayList<String>();
 
     // private constructor
     private Galgelogik() {
@@ -242,5 +251,29 @@ public class Galgelogik {
 
     public ArrayList<String> getMuligeOrd() {
         return muligeOrd;
+    }
+
+    public void saveWord(Context context, String word) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        myWords.add(word);
+        String json = gson.toJson(myWords);
+        editor.putString("array_list_key", json);
+        editor.apply();
+    }
+
+    public ArrayList<String> loadWord(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        Gson gson = new Gson();
+        String json = prefs.getString("array_list_key", null);
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+
+        myWords = gson.fromJson(json, type);
+        if (myWords == null) {
+            return new ArrayList<String>();
+        } else {
+            return myWords;
+        }
     }
 }

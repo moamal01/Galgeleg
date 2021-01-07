@@ -12,6 +12,7 @@ import com.example.galgeleg.controller.Galgelogik
 import com.example.galgeleg.model.Player
 import com.example.galgeleg.view.fragment.ChooseWordFragment
 import com.example.galgeleg.view.fragment.HighScoreFragment
+import com.example.galgeleg.view.fragment.MyWordsFragment
 import kotlinx.android.synthetic.main.activity_menu.*
 import java.util.concurrent.Executors
 
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         start_game_button.setOnClickListener(this)
         custom_word.setOnClickListener(this)
         highScore_button_menu.setOnClickListener(this)
+        my_words_button.setOnClickListener(this)
     }
 
     override fun onStart() {
@@ -47,28 +49,27 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         val player = Player(enter_name_menu.text.toString())
 
-        when (view) {
-            start_game_button -> {
-
-                if (player.name == "") {
-                    error_message_menu.text = "Indtast venligst et navn"
-                } else {
+        if (player.name == "") {
+            error_message_menu.text = "Indtast venligst et navn"
+        } else {
+            when (view) {
+                start_game_button -> {
                     val intent = Intent(this, GameActivity::class.java)
                     intent.putExtra("name", player.name)
                     galgelogik.startNytSpil(null)
                     startActivity(intent)
                 }
-            }
-            highScore_button_menu -> {
-                val highScoreFragment = HighScoreFragment()
-                openFragment(highScoreFragment)
-            }
-            custom_word -> {
-                if (player.name == "") {
-                    error_message_menu.text = "Indtast venligst et navn"
-                } else {
+                highScore_button_menu -> {
+                    val highScoreFragment = HighScoreFragment()
+                    openFragment(highScoreFragment)
+                }
+                custom_word -> {
                     val chooseWordFragment = ChooseWordFragment(player.name)
                     openFragment(chooseWordFragment)
+                }
+                my_words_button -> {
+                    val myWordsFragment = MyWordsFragment(player.name)
+                    openFragment(myWordsFragment)
                 }
             }
         }

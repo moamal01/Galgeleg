@@ -38,15 +38,30 @@
         android:id="@+id/highScore_button_menu"
         android:layout_width="100dp"
         android:layout_height="50dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/futuristic_button"
         android:fontFamily="@font/turret_road_bold"
         android:text="Highscores"
         android:textAllCaps="false"
         android:textColor="#000"
-        app:layout_constraintBottom_toTopOf="@id/start_game_button"
+        app:layout_constraintBottom_toTopOf="@id/custom_word"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/enter_name_menu" />
+
+    <Button
+        android:id="@+id/my_words_button"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@drawable/futuristic_button"
+        android:fontFamily="@font/turret_road_bold"
+        android:text="Mine ord"
+        android:textAllCaps="false"
+        android:textColor="#000"
+        app:layout_constraintBottom_toTopOf="@id/custom_word"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/highScore_button_menu" />
 
     <Button
         android:id="@+id/custom_word"
@@ -59,10 +74,10 @@
         android:text="Vælg et ord"
         android:textAllCaps="false"
         android:textColor="#000"
-        app:layout_constraintTop_toBottomOf="@id/highScore_button_menu"
         app:layout_constraintBottom_toTopOf="@id/start_game_button"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/highScore_button_menu" />
 
     <TextView
         android:id="@+id/error_message_menu"
@@ -70,7 +85,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/turret_road_medium"
         android:textColor="#F61504"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/start_game_button"
         app:layout_constraintLeft_toLeftOf="parent"
