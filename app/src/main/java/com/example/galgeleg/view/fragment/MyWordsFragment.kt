@@ -24,11 +24,7 @@ class MyWordsFragment(var name: String) : Fragment(), View.OnClickListener {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_my_words, container, false)
     }
 
@@ -38,13 +34,7 @@ class MyWordsFragment(var name: String) : Fragment(), View.OnClickListener {
         save_word_button.setOnClickListener(this)
 
         recyclerView_my_words.layoutManager = LinearLayoutManager(activity)
-        recyclerView_my_words.adapter =
-            ChooseWordAdapter(galgelogik.loadWord(activity)) { string, pos ->
-                wordChosen(
-                    string,
-                    pos
-                )
-            }
+        recyclerView_my_words.adapter = ChooseWordAdapter(galgelogik.loadWord(activity)) { string, pos -> wordChosen(string, pos) }
     }
 
     private fun openActivity() {

@@ -27,8 +27,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         start_game_button.setOnClickListener(this)
         custom_word.setOnClickListener(this)
-        highScore_button_menu.setOnClickListener(this)
         my_words_button.setOnClickListener(this)
+
+        highScore_button_menu.setOnClickListener {
+            val highScoreFragment = HighScoreFragment()
+            openFragment(highScoreFragment)
+        }
     }
 
     override fun onStart() {
@@ -39,7 +43,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun openFragment(fragment: Fragment) {
-
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_menu, fragment)
         fragmentTransaction.addToBackStack(null)
@@ -58,10 +61,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     intent.putExtra("name", player.name)
                     galgelogik.startNytSpil(null)
                     startActivity(intent)
-                }
-                highScore_button_menu -> {
-                    val highScoreFragment = HighScoreFragment()
-                    openFragment(highScoreFragment)
                 }
                 custom_word -> {
                     val chooseWordFragment = ChooseWordFragment(player.name)
